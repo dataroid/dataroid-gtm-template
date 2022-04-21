@@ -14,7 +14,9 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Dataroid",
-  "categories": ["ANALYTICS"],
+  "categories": [
+    "ANALYTICS"
+  ],
   "brand": {
     "id": "brand_dummy",
     "displayName": "Dataroid",
@@ -1012,8 +1014,10 @@ const checkIsInitialized = () => {
   if (!templateStorage.getItem(TEMPLATE_STORAGE_KEYS.IS_INITIALIZED)) {
     logError('Dataroid is not initialized');
 
-    data.gtmOnFailure();
+    return false;
   }
+
+  return true;
 };
 
 // Tag actions
@@ -1271,8 +1275,10 @@ const onInjectScriptSuccess = () => {
     return;
   }
 
-  if (data.tagAction !== TAG_ACTIONS.INIT) {
-    checkIsInitialized();
+  if (data.tagAction !== TAG_ACTIONS.INIT && !checkIsInitialized()) {
+    data.gtmOnFailure();
+
+    return;
   }
 
   switch (data.tagAction) {
@@ -2400,3 +2406,5 @@ scenarios: []
 ___NOTES___
 
 Created on 2/23/2022, 3:57:58 PM
+
+
