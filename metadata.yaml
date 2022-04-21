@@ -1,5 +1,9 @@
 homepage: "https://www.dataroid.com"
 documentation: "https://github.com/dataroid/dataroid-gtm-template/blob/master/README.md"
 versions:
+  # Latest version
+  - sha: 82823fc4e36b60c452eda1c438ea49c134e3c20b
+    changeNotes: Update initialization logic.
+  # Older versions
   - sha: a84f51ae9f500b40d075da86baa2d3578bfdfa1b
     changeNotes: Initial release.
